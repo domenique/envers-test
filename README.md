@@ -1,6 +1,8 @@
 # envers-test
 This project illustrates some strange behavior we encountered while using envers.
 
+https://hibernate.atlassian.net/browse/HHH-11063
+
 ## The scenario
 We have an author object which contains a list of books. This relationship is bidirectionally mapped, so book has a reference to the author. 
 Envers whill create mapping table for this relationship while hibernate does not need one because there is a foreign key in the book table.
