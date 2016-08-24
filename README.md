@@ -20,3 +20,21 @@ If we don't include the id in the equals methods then the join table is not fill
 I can't exactly pin-point the place where it goes wrong, but it seems that the audit table is simply filled incorrectly because envers assumes that the equals method will include the primary key.
 Hibernate however, does not rely on the equals method, and for good reason, the equals method should represent the business key and not the technical primary key. 
 Otherwise an existing (stored in the db) book and a newly created book will never be equal anymore.
+
+## running this application
+clone this repo, then build it using gradlew:
+
+```
+./gradlew clean build
+```
+
+The application needs an database connection. So modify the application.properties located in src/main/resources:
+```
+spring.datasource.url=jdbc:postgresql://localhost/enverstest
+spring.datasource.username=postgres
+spring.datasource.password=postgres
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.jpa.generate-ddl=true
+spring.jpa.hibernate.ddl-auto=create
+spring.jpa.database=postgresql
+```
